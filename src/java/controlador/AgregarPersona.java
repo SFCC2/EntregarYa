@@ -7,7 +7,6 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +16,9 @@ import modelo.Persona;
 
 /**
  *
- * @author Labing I5
+ * @author Asus-PC
  */
-public class ListaPersona extends HttpServlet {
+public class AgregarPersona extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +33,11 @@ public class ListaPersona extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BD bd = new BD();
-            ArrayList<Persona> personas = bd.getPersonas();
-
-            StringBuilder content = new StringBuilder();
-            content.append("\n"
-                    + "<!DOCTYPE html>\n"
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>\n"
                     + "<html>\n"
                     + "    <head>\n"
-                    + "        <title>Listar</title>\n"
+                    + "        <title>Agregar</title>\n"
                     + "        <meta charset=\"UTF-8\">\n"
                     + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                     + "        <link rel=\"stylesheet\" href=\"bootstrap.min.css\">\n"
@@ -51,40 +46,46 @@ public class ListaPersona extends HttpServlet {
                     + "        <br>\n"
                     + "        <a class=\"btn btn-primary\" href=\"index.html\">Menu</a>\n"
                     + "        <br>\n"
+                    + "\n"
+                    + "        \n"
                     + "        <div class=\"col-md-12 text-center\">\n"
                     + "\n"
-                    + "            <h2>Lista de Personas</h2>\n"
-                    + "        </div>\n"
-                    + "        <div class=\"col-md-12 \">\n"
+                    + "            <h2>Agregar Persona</h2>\n"
                     + "            <br>\n"
-                    + "            <table class=\"table table-hover\">\n"
-                    + "                <thead>\n"
-                    + "                    <tr>\n"
-                    + "                        <th>Nombre</th>\n"
-                    + "                        <th>Apellido</th>\n"
-                    + "                    </tr>\n"
-                    + "                </thead>\n"
-                    + "                <tbody>\n");
-
-            for (Persona persona : personas) {
-                content.append(""
-                        + "<tr>\n"
-                        + "<td>" + persona.getNombre() + "</td>\n"
-                        + "<td>" + persona.getApellido() + "</td>\n"
-                        + "</tr>\n");
-            }
-
-            content.append(""
-                    + "                </tbody>\n"
-                    + "            </table>\n"
+                    + "            <form action=\"AgregarPersona.html\" method=\"POST\" class=\"col-md-4 col-md-offset-4\">\n"
+                    + "                <div class=\"form-group\">\n"
+                    + "                    <label for=\"Nombre\">Nombre:</label>\n"
+                    + "                    <input type=\"text\" class=\"form-control\" name=\"txtNombre\" required>\n"
+                    + "                </div>\n"
+                    + "                <div class=\"form-group\">\n"
+                    + "                    <label for=\"Apellido\">Apellido</label>\n"
+                    + "                    <input type=\"text\" class=\"form-control\" name=\"txtApellido\" required>\n"
+                    + "                </div>\n"
+                    + "\n"
+                    + "                <button type=\"submit\" class=\"btn btn-success\">Guardar</button>\n"
+                    + "            </form>\n"
                     + "        </div>\n"
+                    + "\n"
                     + "    </body>\n"
                     + "</html>\n"
                     + "");
 
-            out.println(content.toString());
             out.close();
         }
+    }
+    
+    protected void postProcessRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        Persona persona = new Persona(
+                request.getParameter("txtNombre"),
+                request.getParameter("txtApellido")
+        );
+        
+        BD bd = new BD();
+        bd.addPersona(persona);
+        
+        response.sendRedirect("ListaPersona.html");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -113,7 +114,7 @@ public class ListaPersona extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        postProcessRequest(request, response);
     }
 
     /**

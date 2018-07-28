@@ -6,12 +6,27 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Menu</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.min.css">
     </head>
     <body>
-      <a href="agregar.html">Agregar</a>
-       <a href="listar.html">Listar</a>
+        <br>
+        <br>
+        <div class="col-md-12 text-center">
+            <h2>Menu</h2>
+            <br>
+            <form action="AgregarPersona.html" method="GET">
+                <input class="btn btn-primary" type="Submit" value="Agregar Persona" >
+            </form>
+            
+            <br>
+            <br>
+
+            <form action="ListaPersona.html" method="GET">
+                <input class="btn btn-primary" type="Submit" value="Listar Personas" >
+            </form>
+        </div>
     </body>
 </html>
