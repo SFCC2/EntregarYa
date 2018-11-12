@@ -8,6 +8,14 @@
         <servlet-name>AgregarPersona</servlet-name>
         <servlet-class>controlador.AgregarPersona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HoliMundi</servlet-name>
+        <servlet-class>Ejemplo.HoliMundi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarPersona</servlet-name>
+        <servlet-class>controlador.EditarPersona</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListaPersona</servlet-name>
         <url-pattern>/ListaPersona.html</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>AgregarPersona</servlet-name>
         <url-pattern>/AgregarPersona.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HoliMundi</servlet-name>
+        <url-pattern>/HoliMundi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarPersona</servlet-name>
+        <url-pattern>/EditarPersona</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
