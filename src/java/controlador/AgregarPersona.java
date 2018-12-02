@@ -53,6 +53,11 @@ public class AgregarPersona extends HttpServlet {
                     + "            <h2>Agregar Persona</h2>\n"
                     + "            <br>\n"
                     + "            <form action=\"AgregarPersona.html\" method=\"POST\" class=\"col-md-4 col-md-offset-4\">\n"
+                    + "                  <div class=\"form-group\">\n"
+                    + "                    <label for=\"Cedula\">Cpellido</label>\n"
+                    + "                    <input type=\"text\" class=\"form-control\" name=\"txtCedula\" required>\n"
+                    + "                </div>\n"
+                    + "\n"
                     + "                <div class=\"form-group\">\n"
                     + "                    <label for=\"Nombre\">Nombre:</label>\n"
                     + "                    <input type=\"text\" class=\"form-control\" name=\"txtNombre\" required>\n"
@@ -73,18 +78,28 @@ public class AgregarPersona extends HttpServlet {
             out.close();
         }
     }
-    
+
     protected void postProcessRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Persona persona = new Persona(
-                request.getParameter("txtNombre"),
-                request.getParameter("txtApellido")
-        );
-        
+       ///  int a= Integer.parseInt("txtCedula");
+
+
+
+        String numero= request.getParameter("txtCedula");
+        String nombre=  request.getParameter("txtNombre");
+        String apellido= request.getParameter("txtApellido");
+
+
+
+Persona persona = new Persona( Integer.parseInt(numero),
+        nombre, 
+        apellido);
+
+
+
         BD bd = new BD();
         bd.addPersona(persona);
-        
+
         response.sendRedirect("ListaPersona.html");
     }
 

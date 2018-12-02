@@ -18,8 +18,8 @@ public class BD {
     public BD() {
         if (personas == null) {
             this.personas = new ArrayList<>();
-            this.personas.add(new Persona("Sulay", "Cupitra Cupitra"));
-            this.personas.add(new Persona("Tania", "Cupitra Cupitra"));
+            this.personas.add(new Persona(1018,"Sulay", "Cupitra Cupitra"));
+            this.personas.add(new Persona(531016,"Tania", "Cupitra Cupitra"));
         }
     }
 

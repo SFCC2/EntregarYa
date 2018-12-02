@@ -10,12 +10,22 @@ package modelo;
  * @author Labing I5
  */
 public class Persona {
+    private int cedula;
     private String nombre;
     private String apellido;
 
-    public Persona(String nombre, String apellido) {
+    public Persona(int cedula, String nombre, String apellido) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -33,5 +43,6 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
+   
 }

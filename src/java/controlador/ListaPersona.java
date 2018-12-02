@@ -60,6 +60,7 @@ public class ListaPersona extends HttpServlet {
                     + "            <table class=\"table table-hover\">\n"
                     + "                <thead>\n"
                     + "                    <tr>\n"
+                    +                           "<th>Cedula</th>\n"
                     + "                        <th>Nombre</th>\n"
                     + "                        <th>Apellido</th>\n"
                     + "                    </tr>\n"
@@ -69,6 +70,7 @@ public class ListaPersona extends HttpServlet {
             for (Persona persona : personas) {
                 content.append(""
                         + "<tr>\n"
+                        + "<td>" + persona.getCedula()+ "</td>\n"
                         + "<td>" + persona.getNombre() + "</td>\n"
                         + "<td>" + persona.getApellido() + "</td>\n"
                         + "</tr>\n");
