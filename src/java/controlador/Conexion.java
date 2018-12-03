@@ -3,6 +3,7 @@ import java.sql.*;
 
 public class Conexion {
 	
+    
 	private static Connection CONEXION=null;
 	public static Connection getConnection() throws SQLException{
 		   if(CONEXION == null){
